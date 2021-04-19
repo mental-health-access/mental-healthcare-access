@@ -29,3 +29,4 @@ Make sure you assign your code for review, so it can be added to ```main```.
 ## Contributing
 
 - Chris Bay (Team Mentor)
+- Néstor Zumaya
