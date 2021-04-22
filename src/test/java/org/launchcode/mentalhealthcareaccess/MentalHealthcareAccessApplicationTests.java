@@ -1,10 +1,10 @@
-package org.launchcodeiftoff.hello.world;
+package org.launchcode.mentalhealthcareaccess;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class HelloWorldApplicationTests {
+class MentalHealthcareAccessApplicationTests {
 
 	@Test
 	void contextLoads() {
