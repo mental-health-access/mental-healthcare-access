@@ -30,3 +30,4 @@ Make sure you assign your code for review, so it can be added to ```main```.
 
 - Chris Bay (Team Mentor)
 - Néstor Zumaya
+- Gerardo Delgado
