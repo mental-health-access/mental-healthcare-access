@@ -26,7 +26,8 @@ You will then work on your task, and commit as usual. To merge with origin, you 
 
 Make sure you assign your code for review, so it can be added to ```main```.
 
-
 ## Contributing
-Pull requests are welcome from the chris_b_squad.
-// Chris Newell
+
+- Chris Bay (Team Mentor)
+- Néstor Zumaya
+- Gerardo Delgado
