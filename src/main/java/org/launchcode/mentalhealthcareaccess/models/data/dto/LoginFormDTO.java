@@ -9,12 +9,11 @@ public class LoginFormDTO {
 
         @NotNull
         @NotBlank
-        @Size(min = 3, max = 18, message = "Make sure your username is between 3 and 18 characters.")
         private String email;
 
         @NotNull
         @NotBlank
-        @Size(min = 8, max = 30, message = "Choose another password; it must be between 6 and 30 characters")
+        @Size(min = 8, max = 30, message = "Choose another password; it must be between 8 and 30 characters")
         private String password;
 
         public String getEmail() {

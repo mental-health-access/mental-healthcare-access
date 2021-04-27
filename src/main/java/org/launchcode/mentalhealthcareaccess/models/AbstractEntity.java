@@ -15,38 +15,24 @@ public abstract class AbstractEntity {
     @GeneratedValue
     private int id;
 
-    @NotBlank
-    private String name;
 
-    @NotNull
-    private String email;
 
     @NotNull
     private String pwHash;
+
+
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
     public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-    public String getEmail() {
-        return email;
-    }
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     @Override
     public boolean equals(Object o) {

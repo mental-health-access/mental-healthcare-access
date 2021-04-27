@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
 
-<body class="container  body-content">
+
+
 <h1>Provider Sign-up</h1>
 
 
@@ -9,27 +12,27 @@
 <form method="post" style="max-width:600px;">
     <div class="form-group">
         <label th:for="name">Provider or Company Name</label>
-        <input class="form-control" th:field="${provider.name}" />
-        <span th:errors="${provider.name}" class="error"></span>
+        <input class="form-control" th:field="${registerFormDTO.name}" />
+        <span th:errors="${registerFormDTO.name}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="lastName">Last Name</label>
-        <input class="form-control" th:field="${provider.lastName}" />
-        <span th:errors="${provider.lastName}" class="error"></span>
+        <input class="form-control" th:field="${registerFormDTO.lastName}" />
+        <span th:errors="${registerFormDTO.lastName}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label th:for="phoneNumber">Phone Number</label>
-        <input class="form-control" th:field="${provider.phoneNumber}" />
-        <span th:errors="${provider.phoneNumber}" class="error"></span>
+        <input class="form-control" th:field="${registerFormDTO.phoneNumber}" />
+        <span th:errors="${registerFormDTO.phoneNumber}" class="error"></span>
     </div>
 
     <div class="form-group">
         <label>e-mail
             <input class="form-control" th:field="${registerFormDTO.email}" />
         </label>
-        <p class="error" th:errors="${registerFormDTO.username}"></p>
+        <p class="error" th:errors="${registerFormDTO.email}"></p>
     </div>
     <div class="form-group">
         <label>Password
