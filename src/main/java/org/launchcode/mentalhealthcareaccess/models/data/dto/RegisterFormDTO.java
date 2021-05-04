@@ -5,7 +5,6 @@ import javax.validation.constraints.NotBlank;
 public class RegisterFormDTO extends LoginFormDTO {
     @NotBlank
     private String verifyPassword;
-    @NotBlank
     private String firstName;
     private String lastName;
     private String companyName;
@@ -32,12 +31,12 @@ public class RegisterFormDTO extends LoginFormDTO {
     }
     public String getDisplayName() {
         if (firstName != "" && lastName != "") {
-            return displayName = lastName + ", " + firstName;
+             displayName = lastName + ", " + firstName;
         }
         else {
-            return displayName = companyName;
+             displayName = companyName;
         }
-
+        return displayName;
     }
 
 
