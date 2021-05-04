@@ -17,21 +17,6 @@ public abstract class AbstractEntity {
 
 
 
-    @NotNull
-    private String pwHash;
-
-
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
-    public int getId() {
-        return id;
-    }
-
-
-    public boolean isMatchingPassword(String password) {
-        return encoder.matches(password, pwHash);
-    }
-
 
 
     @Override

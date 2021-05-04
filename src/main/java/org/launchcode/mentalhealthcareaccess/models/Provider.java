@@ -16,7 +16,6 @@ public class Provider extends AbstractEntity {
     @NotNull
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-
     public Provider(){ }
     public Provider(String name, String lastName, String email, String phoneNumber, String password) {
         this.name = name;
