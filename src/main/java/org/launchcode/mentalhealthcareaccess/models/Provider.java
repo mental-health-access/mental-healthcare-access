@@ -7,30 +7,56 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 public class Provider extends AbstractEntity {
+    private String companyName;
+    private String displayName;
     private String lastName;
+
     private String phoneNumber;
     @NotBlank
-    private String name;
+    private String firstName;
     @NotNull
     private String email;
     @NotNull
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     public Provider(){ }
-    public Provider(String name, String lastName, String email, String phoneNumber, String password) {
-        this.name = name;
+    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password) {
+        this.companyName = companyName;
+        this.firstName = firstName;
         this.email = email;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.pwHash = encoder.encode(password);
+        this.displayName = displayName;
         }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+    public String getDisplayName() {
+        if (firstName != null && lastName != null) {
+            return displayName = lastName + ", " + firstName;
+        }
+        if (companyName != null){
+            return displayName = companyName;
+        }
+        return displayName;
+    }
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 
     public String getEmail() {
@@ -44,6 +70,7 @@ public class Provider extends AbstractEntity {
     public String getLastName() {
         return lastName;
     }
+
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
@@ -68,10 +95,7 @@ public class Provider extends AbstractEntity {
     public static BCryptPasswordEncoder getEncoder() {
         return encoder;
     }
-    @Override
-    public String toString() {
-        return name;
-    }
+
 
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);

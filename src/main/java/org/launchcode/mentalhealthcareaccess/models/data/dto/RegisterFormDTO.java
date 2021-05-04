@@ -6,15 +6,44 @@ public class RegisterFormDTO extends LoginFormDTO {
     @NotBlank
     private String verifyPassword;
     @NotBlank
-    private String name;
+    private String firstName;
     private String lastName;
+    private String companyName;
+    private String displayName;
+
     @NotBlank
     private String phoneNumber;
 
 
-    public String getName() { return name; }
+    public String getFirstName() {
+        return firstName;
+    }
 
-    public void setName(String name) { this.name = name; }
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getCompanyName() {
+        return companyName;
+    }
+
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
+    }
+    public String getDisplayName() {
+        if (firstName != "" && lastName != "") {
+            return displayName = lastName + ", " + firstName;
+        }
+        else {
+            return displayName = companyName;
+        }
+
+    }
+
+
+    public void setDisplayName(String displayName) {
+        this.displayName = displayName;
+    }
 
     public String getLastName() { return lastName; }
 

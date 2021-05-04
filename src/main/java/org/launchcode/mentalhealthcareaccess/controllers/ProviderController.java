@@ -58,7 +58,9 @@ public class ProviderController {
             return "register";
         }
 
-        Provider newProvider = new Provider(registerFormDTO.getName(),
+        Provider newProvider = new Provider(registerFormDTO.getDisplayName(),
+                registerFormDTO.getCompanyName(),
+                registerFormDTO.getFirstName(),
                 registerFormDTO.getLastName(),
                 registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber(),
