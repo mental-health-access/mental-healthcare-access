@@ -11,7 +11,7 @@
   click the Users & Privileges under the Management section.
 
 * Next, click Add Account in the bottom left hand of the screen. Next add a login
-  name in th login name field. A good practice is to give the login the
+  name in the login name field. A good practice is to give the login the
   same name as the database(or schema).
   
 * In the "Limit to Hosts Matching" field, change the % sign to
