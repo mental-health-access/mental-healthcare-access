@@ -22,6 +22,27 @@ public class ProviderController {
     ProviderRepository providerRepository;
 
 
+    private static final String providerSessionKey = "provider";
+
+    //Get the provider info
+    public Provider getProviderFromSession(HttpSession session) {
+        Integer providerId = (Integer) session.getAttribute(providerSessionKey);
+        if (providerId == null) {
+            return null;
+        }
+
+        Optional<Provider> provider = providerRepository.findById(providerId);
+
+        if (provider.isEmpty()) {
+            return null;
+        }
+
+        return provider.get();
+    }
+    //Set the provider in  session
+    private static void setProviderInSession(HttpSession session, Provider provider) {
+        session.setAttribute(providerSessionKey, provider.getId());
+    }
 
      @GetMapping("provider/signup")
      public String displaySignUpForm(Model model) {
