@@ -48,6 +48,7 @@ public class Provider extends AbstractEntity {
         return displayName;
     }
 
+
     public void setDisplayName(String displayName) {
         this.displayName = displayName;
     }

@@ -45,9 +45,23 @@ public class ProviderController {
         if (existingProvider != null) {
             //This is a custom error
             errors.rejectValue("email", "email.alreadyexists", "This email is already registered, please choose anew one");
-            model.addAttribute("title", "Register");
-            return "register";
+            model.addAttribute("title", "Sign-Up");
+            return "/provider/signup";
         }
+
+        if (registerFormDTO.getCompanyName() == "" && (registerFormDTO.getFirstName() == "" || registerFormDTO.getLastName() == "") ){
+            //This is a custom error
+            errors.rejectValue("companyName", "companyName.cannotBeBlank", "You must enter a Company Name or a First and Last Name for the provider");
+            model.addAttribute("title", "Sign-Up");
+            return "/provider/signup";
+        }
+        if (registerFormDTO.getCompanyName() != "" && (registerFormDTO.getFirstName() != "" || registerFormDTO.getLastName() != "") ){
+            //This is a custom error
+            errors.rejectValue("companyName", "companyName.onlyOneType", "You must choose to enter either a Company Name or a First and Last Name");
+            model.addAttribute("title", "Sign-Up");
+            return "/provider/signup";
+        }
+
         //This password was set in LoginFormDTO
         String password = registerFormDTO.getPassword();
         //This password was set in RegisterFormDTO that EXTENDS LoginFormDTO
@@ -55,7 +69,7 @@ public class ProviderController {
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("password", "passwords.mismatch", "Passwords do not match");
             model.addAttribute("title", "Sign-up");
-            return "register";
+            return "/provider/signup";
         }
 
         Provider newProvider = new Provider(registerFormDTO.getDisplayName(),
