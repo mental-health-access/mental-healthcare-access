@@ -103,6 +103,7 @@ public class ProviderController {
 
         providerRepository.save(newProvider);
 
+        setProviderInSession(request.getSession(), newProvider);
         return "redirect:";
     }
 }
