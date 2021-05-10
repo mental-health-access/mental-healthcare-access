@@ -66,7 +66,7 @@ public class ProviderController {
 
         if (existingProvider != null) {
             //This is a custom error
-            errors.rejectValue("email", "email.alreadyexists", "This email is already registered, please choose anew one");
+            errors.rejectValue("email", "email.alreadyExists", "This email is already registered, please choose anew one");
             model.addAttribute("title", "Sign-Up");
             return "provider/signup";
         }
@@ -119,6 +119,7 @@ public class ProviderController {
         model.addAttribute("title", "Log In");
         return "/provider/login";
     }
+
     @PostMapping("/provider/login")
     public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
@@ -148,10 +149,12 @@ public class ProviderController {
         }
         //Create a new session for the provider
         setProviderInSession(request.getSession(), theProvider);
+
+        // Set attributes for provider session
         session.setAttribute("name", theProvider.getDisplayName());
         session.setAttribute("email", theProvider.getEmail());
         session.setAttribute("phone", theProvider.getPhoneNumber());
-        //Back to dashboard
-        return "dashboard";
+        //Login to  dashboard
+        return "/provider/dashboard";
     }
 }
