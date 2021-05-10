@@ -7,6 +7,19 @@
     <script type="text/javascript" src="/webjars/bootstrap/js/bootstrap.min.js"></script>
 </head>
 <body>
+<nav th:fragment="header"><!-- Navigation header -->
+    <div style="background: url(https://images.unsplash.com/photo-1470569584027-67bf7fa60807?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1650&q=80)" class="jumbotron bg-cover text-white">
+        <h1 th:text="${title}">Mental Healthcare Access</h1>
+        <ul class="nav">
+            <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Placeholder 1</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Placeholder 2</a></li>
+            <li class="nav-item"><a class="nav-link" href="#">Placeholder 3</a></li>
+            <li class="nav-item"><a class="nav-link" href="/provider/login">Provider Log-in</a></li>
+            <li class="nav-item"><a class="nav-link" href="/provider/signup">Provider Signup</a></li>
+        </ul>
+    </div>
+</nav>
 
 </body>
 </html>

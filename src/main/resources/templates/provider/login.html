@@ -3,7 +3,7 @@
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
 
-<h1>Provider Log-In</h1>
+<nav th:replace="fragments :: header"></nav>
 
 
 <form method="post" style="max-width:600px;">
@@ -23,7 +23,7 @@
     <input type="submit" value="Log In" />
 </form>
 
-<p>If you don't have an account, <a href="provider/signup">register for one now.</a></p>
+<p>If you don't have an account, <a href="/provider/signup">register for one now.</a></p>
 
 </body>
 </html>
