@@ -39,17 +39,17 @@ public class Provider extends AbstractEntity {
     }
 
     public String getDisplayName() {
-        if (firstName != "" && lastName != "") {
-            displayName = lastName + ", " + firstName;
-        }
-        else {
-            displayName = companyName;
-        }
         return displayName;
     }
 
+
     public void setDisplayName(String displayName) {
-        this.displayName = displayName;
+        if (firstName != "" && lastName != "") {
+            this.displayName = lastName + ", " + firstName;
+        } else {
+
+            this.displayName = companyName;
+        }
     }
 
     public String getCompanyName() {
