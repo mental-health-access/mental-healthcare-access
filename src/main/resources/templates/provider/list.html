@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+
+<div class="container body-content">
+    <h2 class = "centered">Mental Health Resources</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th>Providers</th>
+    </tr>
+
+    <tr>
+
+        <td>
+            <li th:each="provider : ${providers}">
+                <a th:href="@{/list/providers(column=provider,value=${provider.displayName})}" th:text="${provider.companyName}"></a>
+            </li>
+        </td>
+        <td>
+
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
