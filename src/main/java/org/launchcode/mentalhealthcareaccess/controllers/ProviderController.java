@@ -157,4 +157,9 @@ public class ProviderController {
         //Login to  dashboard
         return "/provider/dashboard";
     }
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/provider/login";
+    }
 }
