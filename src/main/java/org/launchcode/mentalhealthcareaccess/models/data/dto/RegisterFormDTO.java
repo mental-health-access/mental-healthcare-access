@@ -1,5 +1,9 @@
 package org.launchcode.mentalhealthcareaccess.models.data.dto;
 
+import org.launchcode.mentalhealthcareaccess.models.Languages;
+
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 
 public class RegisterFormDTO extends LoginFormDTO {
@@ -9,6 +13,17 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String lastName;
     private String companyName;
     private String displayName;
+
+
+    private Languages languages;
+
+    public Languages getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Languages languages) {
+        this.languages = languages;
+    }
 
     @NotBlank
     private String phoneNumber;

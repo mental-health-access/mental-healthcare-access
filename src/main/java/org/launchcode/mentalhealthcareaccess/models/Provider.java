@@ -1,6 +1,8 @@
 package org.launchcode.mentalhealthcareaccess.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
@@ -11,6 +13,17 @@ public class Provider extends AbstractEntity {
     private String displayName;
     private String lastName;
 
+
+    private Languages languages;
+
+    public Languages getLanguages() {
+        return languages;
+    }
+
+    public void setLanguages(Languages languages) {
+        this.languages = languages;
+    }
+
     private String phoneNumber;
     @NotBlank
     private String firstName;
@@ -20,7 +33,7 @@ public class Provider extends AbstractEntity {
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     public Provider(){ }
-    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password) {
+    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password, Languages languages) {
         this.companyName = companyName;
         this.firstName = firstName;
         this.email = email;
@@ -28,6 +41,7 @@ public class Provider extends AbstractEntity {
         this.phoneNumber = phoneNumber;
         this.pwHash = encoder.encode(password);
         this.displayName = displayName;
+        this.languages = languages;
         }
 
     public String getFirstName() {
