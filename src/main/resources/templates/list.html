@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head">
+</head>
+<body>
+
+
+<div class="container body-content">
+    <h2 class = "centered">Mental Health Resources</h2>
+</div>
+
+<table class="centeredTable">
+    <tr>
+        <th>Providers</th>
+    </tr>
+
+    <tr th:each="provider : ${providers}">
+
+        <td>
+
+             <p>
+                    Provider:
+             <p th:text="${'Name: ' + provider.displayName}"></p>
+    </p>
+
+        </td>
+
+    </tr>
+</table>
+
+</body>
+</html>
