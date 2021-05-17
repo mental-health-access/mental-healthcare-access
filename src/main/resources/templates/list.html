@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org/">
-<head th:replace="fragments :: head">
-</head>
-<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
 
 
-<div class="container body-content">
-    <h2 class = "centered">Mental Health Resources</h2>
-</div>
+
+<nav th:replace="fragments :: header"></nav>
+
+
 
 <table class="centeredTable">
     <tr>
@@ -19,8 +19,8 @@
         <td>
 
              <p>
-                    Provider:
-             <p th:text="${'Name: ' + provider.displayName}"></p>
+
+                 <a th:href="@{'/provider/view/' + ${provider.id}}" th:text="${provider.displayName}"></a>
     </p>
 
         </td>
