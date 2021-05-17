@@ -14,16 +14,17 @@
         <th>Providers</th>
     </tr>
 
-    <tr>
+    <tr th:each="provider : ${providers}">
 
         <td>
-            <li th:each="provider : ${providers}">
-                <a th:href="@{/list/providers(column=provider,value=${provider.displayName})}" th:text="${provider.companyName}"></a>
-            </li>
-        </td>
-        <td>
+
+             <p>
+                    Provider:
+             <p th:text="${'Name: ' + provider.displayName}"></p>
+    </p>
 
         </td>
+
     </tr>
 </table>
 
