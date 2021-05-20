@@ -12,8 +12,9 @@
     <p th:text="${'Name: ' + session.name}"></p>
     <p th:text="${'e-mail: ' + session.email}"></p>
     <p th:text="${'Phone Number: ' + session.phone}"></p>
+    <p th:text="${'Languages for your services: ' + session.languages + ' '}"></p>
 </div>
 
-
+<a th:href="'/provider/settings?providerId=' + ${session.provider.id}">Settings</a>
 </body>
 </html>
