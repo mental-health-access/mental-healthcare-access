@@ -119,6 +119,7 @@ public class ProviderController {
         return "provider/dashboard";
     }
 
+    // login mapping
     @GetMapping("/provider/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
@@ -161,24 +162,35 @@ public class ProviderController {
         session.setAttribute("email", theProvider.getEmail());
         session.setAttribute("phone", theProvider.getPhoneNumber());
         session.setAttribute("providerId", theProvider.getId());
-        session.setAttribute("provider", theProvider);
         session.setAttribute("languages", theProvider.getLanguages());
+        session.setAttribute("provider", theProvider);
         //Login to dashboard
+        return "/provider/dashboard";
+    }
+
+    //displays provider info in their dashboard
+    @GetMapping("/provider/dashboard")
+    public String displayDashboard(Model model, Provider theProvider, HttpSession session) {
+        Integer providerId = (Integer) session.getAttribute("providerId");
+        Optional<Provider> result = providerRepository.findById(providerId);
+        Provider dashProvider = result.get();
+        model.addAttribute("title", "Dashboard");
+        model.addAttribute("dashboardLanguages", dashProvider.getLanguages());
         return "/provider/dashboard";
     }
         //Change languages for services provided
     @GetMapping("/provider/settings")
-    public String displaySettingsForm(@RequestParam Integer providerId, Model model, HttpServletRequest request, HttpSession session, Provider theProvider){
-        Optional<Provider> result = providerRepository.findById(providerId);
-        Provider provider = result.get();
+    public String displaySettingsForm(Model model, Provider theProvider, HttpSession session){
+        ProviderLanguagesDTO providerLanguages = new ProviderLanguagesDTO();
+        Integer providerId = (Integer) session.getAttribute("providerId");
+       Optional<Provider> result = providerRepository.findById(providerId);
+       Provider modProvider = result.get();
         model.addAttribute("title", "Settings");
         model.addAttribute("languages", Languages.values());
-        ProviderLanguagesDTO providerLanguages = new ProviderLanguagesDTO();
-        providerLanguages.setProvider(provider);
+        providerLanguages.setProvider(modProvider);
         model.addAttribute("providerLanguages", providerLanguages);
-
-
-        return "provider/settings";
+        model.addAttribute("currentLanguages", modProvider.getLanguages());
+        return "/provider/settings";
     }
 
     @PostMapping ("/provider/settings")

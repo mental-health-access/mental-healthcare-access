@@ -11,7 +11,8 @@
 
 <form method="post" style="max-width:600px;">
     <div class="form-group">
-        <label> <p th:text= "${'Set the languages in which you provide services, ' + session.name}"></p>
+        <label> <p Set the languages in which you provide services></p>
+            <p th:text="${'Languages that you currently support: ' + currentLanguages + ' '}"></p>
             <input type = "hidden" th:field="${providerLanguages.provider}">
             <select th:field = "${providerLanguages.languages}">
                 <option th:each="languages : ${T(org.launchcode.mentalhealthcareaccess.models.Languages).values()}"
