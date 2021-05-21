@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8"/>
+    <title th:text="#{logintitle}"></title>
+</head>
+<body>
+<h1 th:text="#{loginheading}"></h1>
+<div>
+    <span th:text="#{signuptext}"></span>
+    <a href="/user/signup" th:text="#{signuplink}"></a><span th:text="."></span>
+</div>
+<form action="" method="post">
+    <div>
+        <label th:for="email" th:text="#{email}">
+            <input th:field="${loginFormDTO.email}" th:type="email"/>
+        </label>
+    </div>
+    <div>
+        <label th:for="password" th:text="#{password}"></label>
+<!--        <input th:field="${loginFormDTO.password}" th:type="password"/>-->
+    </div>
+    <div>
+        <button type="submit" th:text="#{lbutton}"/></button>
+    </div>
+</form>
+</body>
+</html>
