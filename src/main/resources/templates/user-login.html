@@ -10,19 +10,18 @@
     <span th:text="#{signuptext}"></span>
     <a href="/user/signup" th:text="#{signuplink}"></a><span th:text="."></span>
 </div>
-<form action="" method="post">
+<form method="post">
     <div>
-        <label th:for="email" th:text="#{email}">
-            <input th:field="${loginFormDTO.email}" th:type="email"/>
-        </label>
+        <label th:for="email" th:text="#{email}"></label>
+        <input th:field="${userLoginFormDTO.email}" th:type="email"/>
+        <p th:errors="${userLoginFormDTO.email}"></p>
     </div>
     <div>
         <label th:for="password" th:text="#{password}"></label>
-<!--        <input th:field="${loginFormDTO.password}" th:type="password"/>-->
+        <input th:field="${userLoginFormDTO.password}" th:type="password"/>
+        <p th:errors="${userLoginFormDTO.password}"></p>
     </div>
-    <div>
-        <button type="submit" th:text="#{lbutton}"/></button>
-    </div>
+    <button type="submit" th:text="#{lbutton}"/></button>
 </form>
 </body>
 </html>

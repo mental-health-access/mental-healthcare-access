@@ -15,27 +15,27 @@
     <div>
         <label th:for="firstName" th:text="#{fname}"></label>
         <input th:field="${userSignupFormDTO.firstName}"/>
-        <p th:errors="${userSignupFormDTO.firstName}"></p>
+        <span th:errors="${userSignupFormDTO.firstName}"></span>
     </div>
     <div>
         <label th:for="lastName" th:text="#{lname}"></label>
         <input th:field="${userSignupFormDTO.lastName}"/>
-        <p th:errors="${userSignupFormDTO.lastName}"></p>
+        <span th:errors="${userSignupFormDTO.lastName}"></span>
     </div>
     <div>
         <label th:for="email" th:text="#{email}"></label>
         <input th:field="${userSignupFormDTO.email}"/>
-        <p th:errors="${userSignupFormDTO.email}"></p>
+        <span th:errors="${userSignupFormDTO.email}"></span>
     </div>
     <div>
-        <label th:for="${userSignupFormDTO.password}" th:text="#{password}"></label>
-        <input th:field="${userSignupFormDTO.password}"/>
-        <p th:errors="${userSignupFormDTO.password}"></p>
+        <label th:for="password" th:text="#{password}"></label>
+        <input type="password" th:field="${userSignupFormDTO.password}"/>
+        <span th:errors="${userSignupFormDTO.password}"></span>
     </div>
     <div>
         <label th:for="verifyPassword" th:text="#{verifypw}"></label>
         <input type="password" th:field="${userSignupFormDTO.verifyPassword}"/>
-        <p th:errors="${userSignupFormDTO.verifyPassword}"/>
+        <span th:errors="${userSignupFormDTO.verifyPassword}"/>
     </div>
     <button th:text="#{sbutton} "type="submit"/></button>
 </form>

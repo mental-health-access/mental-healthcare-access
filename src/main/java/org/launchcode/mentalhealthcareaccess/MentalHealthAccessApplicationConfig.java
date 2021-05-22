@@ -26,9 +26,15 @@ public class MentalHealthAccessApplicationConfig implements WebMvcConfigurer {
         return lci;
     }
 
+    @Bean
+    public AuthenticationFilter authenticationFilter() {
+        return new AuthenticationFilter();
+    }
+
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(localeChangeInterceptor());
+        registry.addInterceptor(authenticationFilter());
     }
 
 }

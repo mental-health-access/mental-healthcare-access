@@ -1,22 +1,25 @@
 package org.launchcode.mentalhealthcareaccess.models.dto;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class UserSignupFormDTO extends UserLoginFormDTO {
 
-    private String username;
-
+    @NotNull
+    @NotBlank(message = "")
+    @Size(min=2,max=30, message = "First name must be between 2 and 30 characters.")
     private String firstName;
 
+    @NotNull
+    @NotBlank(message = "")
+    @Size(min=2,max=30, message = "Last name must be between 2 and 30 characters.")
     private String lastName;
 
+    @NotNull
+    @NotBlank(message = "")
+    @Size(min=5,max=30, message = "Invalid password. Must be between 5 and 30 characters.")
     private String verifyPassword;
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
 
     public String getFirstName() {
         return firstName;

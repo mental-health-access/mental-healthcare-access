@@ -7,8 +7,7 @@ public class User extends AbstractUser {
 
     public User() {};
 
-    public User(String username, String firstName, String lastName, String email, String password) {
-        this.username = email;
+    public User(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
