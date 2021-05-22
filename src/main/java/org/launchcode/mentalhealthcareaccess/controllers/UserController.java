@@ -10,8 +10,8 @@ public class UserController {
 
     @GetMapping("/user")
     public String displayUserPage(Model model) {
-        model.addAttribute("welcome", "Welcome Kris");
-        return "user";
+        model.addAttribute("welcome", "Welcome");
+        return "user/user";
     }
 
 }

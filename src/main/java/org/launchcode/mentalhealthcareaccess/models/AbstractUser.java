@@ -52,5 +52,18 @@ public abstract class AbstractUser {
         return email;
     }
 
-}
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        AbstractUser that = (AbstractUser) o;
+
+        return userId == that.userId;
+    }
+
+    @Override
+    public int hashCode() {
+        return userId;
+    }
+}

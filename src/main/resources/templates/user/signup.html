@@ -1,24 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="#{signuptitle}"></title>
-</head>
-<body>
-<h1 th:text="#{signupheading}"></h1>
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<h1 th:text="#{signupHeading}"></h1>
 
 <div>
-    <span th:text="#{logintext}" ></span>
-    <a href="/user/login" th:text="#{loginlink}" ></a><span th:text="."></span>
+    <span th:text="#{loginText}" ></span>
+    <a href="/user/login" th:text="#{here}" ></a><span th:text="."></span>
 </div>
 <form method="post">
     <div>
-        <label th:for="firstName" th:text="#{fname}"></label>
+        <label th:for="firstName" th:text="#{fName}"></label>
         <input th:field="${userSignupFormDTO.firstName}"/>
         <span th:errors="${userSignupFormDTO.firstName}"></span>
     </div>
     <div>
-        <label th:for="lastName" th:text="#{lname}"></label>
+        <label th:for="lastName" th:text="#{lName}"></label>
         <input th:field="${userSignupFormDTO.lastName}"/>
         <span th:errors="${userSignupFormDTO.lastName}"></span>
     </div>
@@ -33,11 +30,11 @@
         <span th:errors="${userSignupFormDTO.password}"></span>
     </div>
     <div>
-        <label th:for="verifyPassword" th:text="#{verifypw}"></label>
+        <label th:for="verifyPassword" th:text="#{verifyPw}"></label>
         <input type="password" th:field="${userSignupFormDTO.verifyPassword}"/>
         <span th:errors="${userSignupFormDTO.verifyPassword}"/>
     </div>
-    <button th:text="#{sbutton} "type="submit"/></button>
+    <button th:text="#{sButton} "type="submit"/></button>
 </form>
 </body>
 </html>

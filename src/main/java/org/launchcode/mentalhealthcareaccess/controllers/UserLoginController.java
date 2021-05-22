@@ -27,27 +27,27 @@ public class UserLoginController {
     @GetMapping("user/login")
     public String displayLogInForm(Model model) {
         model.addAttribute(new UserLoginFormDTO());
-        return "user-login";
+        return "user/login";
     }
 
     @PostMapping("/user/login")
     public String processLoginForm(@ModelAttribute @Valid UserLoginFormDTO userLoginFormDTO, Errors errors, HttpServletRequest request, Model model) {
         if (errors.hasErrors()) {
-            return "user-login";
+            return "user/login";
         }
 
         User theUser = userRepository.findByEmail(userLoginFormDTO.getEmail());
 
         if (theUser == null) {
             errors.rejectValue("email", "email.invalid", "The given email address does not exist");
-            return "user-login";
+            return "user/login";
         }
 
         String password = userLoginFormDTO.getPassword();
 
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
-            return "user-login";
+            return "user/login";
         }
 
         setUserInSession(request.getSession(), theUser);

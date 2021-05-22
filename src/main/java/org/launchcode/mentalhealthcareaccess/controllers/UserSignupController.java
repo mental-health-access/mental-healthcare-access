@@ -27,27 +27,27 @@ public class UserSignupController {
     @GetMapping("/user/signup")
     public String displaySignUpForm(Model model) {
         model.addAttribute(new UserSignupFormDTO());
-        return "user-signup";
+        return "user/signup";
     }
 
     @PostMapping("/user/signup")
     public String processSignUpForm(@ModelAttribute @Valid UserSignupFormDTO userSignupFormDTO, Errors errors, HttpServletRequest request, Model model) {
         if (errors.hasErrors()) {
-            return "user-signup";
+            return "user/signup";
         }
 
         User existingUser = userRepository.findByEmail(userSignupFormDTO.getEmail());
 
         if (existingUser != null) {
             errors.rejectValue("email", "email.alreadyexists", "A user with that email address already exists");
-            return "user-signup";
+            return "user/signup";
         }
 
         String password = userSignupFormDTO.getPassword();
         String verifyPassword = userSignupFormDTO.getVerifyPassword();
         if (!password.equals(verifyPassword)) {
             errors.rejectValue("verifyPassword", "passwords.mismatch", "Passwords do not match");
-            return "user-signup";
+            return "user/signup";
         }
 
         User newUser = new User(userSignupFormDTO.getFirstName(), userSignupFormDTO.getLastName(), userSignupFormDTO.getEmail(), userSignupFormDTO.getPassword());

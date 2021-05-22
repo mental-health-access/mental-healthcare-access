@@ -1,27 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8"/>
-    <title th:text="#{logintitle}"></title>
-</head>
-<body>
-<h1 th:text="#{loginheading}"></h1>
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+<h1 th:text="#{loginHeading}"></h1>
 <div>
-    <span th:text="#{signuptext}"></span>
-    <a href="/user/signup" th:text="#{signuplink}"></a><span th:text="."></span>
+    <span th:text="#{signupText}"></span>
+    <a href="/user/signup" th:text="#{here}"></a><span th:text="."></span>
 </div>
 <form method="post">
     <div>
         <label th:for="email" th:text="#{email}"></label>
         <input th:field="${userLoginFormDTO.email}" th:type="email"/>
-        <p th:errors="${userLoginFormDTO.email}"></p>
+        <span th:errors="${userLoginFormDTO.email}"></span>
     </div>
     <div>
         <label th:for="password" th:text="#{password}"></label>
         <input th:field="${userLoginFormDTO.password}" th:type="password"/>
-        <p th:errors="${userLoginFormDTO.password}"></p>
+        <span th:errors="${userLoginFormDTO.password}"></span>
     </div>
-    <button type="submit" th:text="#{lbutton}"/></button>
+    <button type="submit" th:text="#{lButton}"/></button>
 </form>
 </body>
 </html>
