@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class UserController {
+public class UserLandingController {
 
     @GetMapping("/user")
     public String displayUserPage(Model model) {
