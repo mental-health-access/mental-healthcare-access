@@ -50,6 +50,18 @@
             <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
         </label>
     </div>
+    <div class="form-group">
+        <label>Primary language of your practice
+            <select th:field = "${registerFormDTO.languages}">
+                <option th:each="languages : ${T(org.launchcode.mentalhealthcareaccess.models.Languages).values()}"
+                       th:value="${languages}"
+                       th:text="${languages.displayValue}">
+                </option>
+            </select>
+        </label>
+
+
+    </div>
 
     <input type="submit" value="Sign-up" />
 </form>

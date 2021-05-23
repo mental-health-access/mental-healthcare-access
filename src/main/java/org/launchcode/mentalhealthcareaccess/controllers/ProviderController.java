@@ -66,7 +66,7 @@ public class ProviderController {
 
         if (existingProvider != null) {
             //This is a custom error
-            errors.rejectValue("email", "email.alreadyExists", "This email is already registered, please choose anew one");
+            errors.rejectValue("email", "email.alreadyExists", "This email is already registered, please choose a new one");
             model.addAttribute("title", "Sign-Up");
             return "provider/signup";
         }
@@ -100,7 +100,8 @@ public class ProviderController {
                 registerFormDTO.getLastName(),
                 registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber(),
-                registerFormDTO.getPassword());
+                registerFormDTO.getPassword(),
+                registerFormDTO.getLanguages());
 
         providerRepository.save(newProvider);
 
