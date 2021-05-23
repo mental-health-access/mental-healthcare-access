@@ -1,10 +1,11 @@
 package org.launchcode.mentalhealthcareaccess.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 
 @Entity
@@ -12,18 +13,7 @@ public class Provider extends AbstractEntity {
     private String companyName;
     private String displayName;
     private String lastName;
-
-
-    private Languages languages;
-
-    public Languages getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(Languages languages) {
-        this.languages = languages;
-    }
-
+    private Languages lang;
     private String phoneNumber;
     @NotBlank
     private String firstName;
@@ -32,8 +22,18 @@ public class Provider extends AbstractEntity {
     @NotNull
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
-    public Provider(){ }
-    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password, Languages languages) {
+
+    @ElementCollection(targetClass = Languages.class)
+    @CollectionTable(name = "provider_languages",
+            joinColumns = @JoinColumn(name = "provider_id"))
+    @Enumerated(EnumType.STRING)
+    @Column(name = "languages_supported")
+    private final List<Languages> languages = new ArrayList<>();
+
+    public Provider() {
+    }
+
+    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password, Languages lang) {
         this.companyName = companyName;
         this.firstName = firstName;
         this.email = email;
@@ -41,8 +41,16 @@ public class Provider extends AbstractEntity {
         this.phoneNumber = phoneNumber;
         this.pwHash = encoder.encode(password);
         this.displayName = displayName;
-        this.languages = languages;
-        }
+        this.lang = lang;
+    }
+
+    public Languages getLang() {
+        return lang;
+    }
+
+    public void setLang(Languages lang) {
+        this.lang = lang;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -111,12 +119,22 @@ public class Provider extends AbstractEntity {
         return encoder;
     }
 
-
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
 
+    public List<Languages> getLanguages() {
+        return languages;
+    }
+
+    public void addLanguages(Languages languages) {
+
+        this.languages.add(languages);
+
+
+    }
 
 }
+
 
 

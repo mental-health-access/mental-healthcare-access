@@ -13,21 +13,17 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String lastName;
     private String companyName;
     private String displayName;
-
-
-    private Languages languages;
-
-    public Languages getLanguages() {
-        return languages;
-    }
-
-    public void setLanguages(Languages languages) {
-        this.languages = languages;
-    }
-
+    private Languages lang;
     @NotBlank
     private String phoneNumber;
 
+    public Languages getLang() {
+        return lang;
+    }
+
+    public void setLang(Languages lang) {
+        this.lang = lang;
+    }
 
     public String getFirstName() {
         return firstName;

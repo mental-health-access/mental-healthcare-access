@@ -1,8 +1,10 @@
 package org.launchcode.mentalhealthcareaccess.controllers;
+import org.launchcode.mentalhealthcareaccess.models.Languages;
 import org.launchcode.mentalhealthcareaccess.models.data.ProviderRepository;
 import org.launchcode.mentalhealthcareaccess.models.Provider;
 
 import org.launchcode.mentalhealthcareaccess.models.data.dto.LoginFormDTO;
+import org.launchcode.mentalhealthcareaccess.models.data.dto.ProviderLanguagesDTO;
 import org.launchcode.mentalhealthcareaccess.models.data.dto.RegisterFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,10 +13,13 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
+import java.util.List;
 import java.util.Optional;
 @Controller
 public class ProviderController {
@@ -101,7 +106,7 @@ public class ProviderController {
                 registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber(),
                 registerFormDTO.getPassword(),
-                registerFormDTO.getLanguages());
+                registerFormDTO.getLang());
 
         providerRepository.save(newProvider);
 
@@ -114,6 +119,7 @@ public class ProviderController {
         return "provider/dashboard";
     }
 
+    // login mapping
     @GetMapping("/provider/login")
     public String displayLoginForm(Model model) {
         model.addAttribute(new LoginFormDTO());
@@ -155,9 +161,58 @@ public class ProviderController {
         session.setAttribute("name", theProvider.getDisplayName());
         session.setAttribute("email", theProvider.getEmail());
         session.setAttribute("phone", theProvider.getPhoneNumber());
-        //Login to  dashboard
+        session.setAttribute("providerId", theProvider.getId());
+        session.setAttribute("languages", theProvider.getLanguages());
+        session.setAttribute("provider", theProvider);
+        //Login to dashboard
         return "/provider/dashboard";
     }
+
+    //displays provider info in their dashboard
+    @GetMapping("/provider/dashboard")
+    public String displayDashboard(Model model, Provider theProvider, HttpSession session) {
+        Integer providerId = (Integer) session.getAttribute("providerId");
+        Optional<Provider> result = providerRepository.findById(providerId);
+        Provider dashProvider = result.get();
+        model.addAttribute("title", "Dashboard");
+        model.addAttribute("dashboardLanguages", dashProvider.getLanguages());
+        return "/provider/dashboard";
+    }
+        //Change languages for services provided
+    @GetMapping("/provider/settings")
+    public String displaySettingsForm(Model model, Provider theProvider, HttpSession session){
+        ProviderLanguagesDTO providerLanguages = new ProviderLanguagesDTO();
+        Integer providerId = (Integer) session.getAttribute("providerId");
+       Optional<Provider> result = providerRepository.findById(providerId);
+       Provider modProvider = result.get();
+        model.addAttribute("title", "Settings");
+        model.addAttribute("languages", Languages.values());
+        providerLanguages.setProvider(modProvider);
+        model.addAttribute("providerLanguages", providerLanguages);
+        model.addAttribute("currentLanguages", modProvider.getLanguages());
+        return "/provider/settings";
+    }
+
+    @PostMapping ("/provider/settings")
+    public String processSettingsForm(@ModelAttribute @Valid ProviderLanguagesDTO providerLanguages,
+                                      Errors errors,
+                                      Model model,
+                                      HttpSession session,
+                                      Provider theProvider){
+        if (!errors.hasErrors()){
+            Provider provider = providerLanguages.getProvider();
+            Languages languages = providerLanguages.getLanguages();
+                if (!provider.getLanguages().contains(languages)) {
+                    provider.addLanguages(languages);
+                    providerRepository.save(provider);
+                }
+            return "/provider/dashboard";
+
+        }
+        return "/provider/dashboard";
+    }
+
+
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
