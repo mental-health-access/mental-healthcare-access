@@ -14,7 +14,8 @@ import java.util.HashMap;
 import java.util.Optional;
 
 @Controller
-@RequestMapping(value = "list")
+@RequestMapping(value = "providers")
+
 
 
 
@@ -32,7 +33,7 @@ public class ProviderListController {
 
     }
 
-    @GetMapping("")
+    @RequestMapping("")
     public String displayAllProviders(Model model) {
         model.addAttribute("title", "All Providers");
         model.addAttribute("providers", providerRepository.findAll());
@@ -40,12 +41,17 @@ public class ProviderListController {
     }
 
 
-    @PostMapping("provider/view/{providerId}")
-    public String displayViewProvider(Model model, @PathVariable int providerId) {
+    @RequestMapping("/{id}")
+    public String displayViewProvider(Model model, @PathVariable int id) {
 
-        Provider provider = providerRepository.findById(providerId).get();
-        model.addAttribute("provider", provider);
-        return "provider/view";
+        Optional<Provider> provider = providerRepository.findById(id);
+        if(provider.isPresent()){
+            model.addAttribute("provider", provider.get());
+            return "provider/view";
+        }
+
+
+        return "provider/not-found" ;
 
     }
 }
