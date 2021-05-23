@@ -8,11 +8,7 @@ import javax.persistence.MappedSuperclass;
 import javax.validation.constraints.*;
 
 @MappedSuperclass
-public abstract class AbstractUser {
-
-    @Id
-    @GeneratedValue
-    private int userId;
+public abstract class AbstractUser extends AbstractEntity {
 
     @NotNull
     protected String firstName;
@@ -28,8 +24,8 @@ public abstract class AbstractUser {
 
     protected static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     public String getFirstName() {
@@ -50,20 +46,5 @@ public abstract class AbstractUser {
 
     public String getEmail() {
         return email;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        AbstractUser that = (AbstractUser) o;
-
-        return userId == that.userId;
-    }
-
-    @Override
-    public int hashCode() {
-        return userId;
     }
 }

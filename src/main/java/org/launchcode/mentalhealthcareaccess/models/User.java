@@ -17,5 +17,4 @@ public class User extends AbstractUser {
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, pwHash);
     }
-
 }

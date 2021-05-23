@@ -73,7 +73,7 @@ public class UserSignupController {
     }
 
     protected static void setUserInSession(HttpSession session, User user) {
-        session.setAttribute(userSessionKey, user.getUserId());
+        session.setAttribute(userSessionKey, user.getId());
     }
 }
 

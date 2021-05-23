@@ -2,6 +2,8 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head"></head>
 <body class="container body-content">
+<nav th:replace="fragments :: header"></nav>
+
 <h1 th:text="#{loginHeading}"></h1>
 <div>
     <span th:text="#{signupText}"></span>
