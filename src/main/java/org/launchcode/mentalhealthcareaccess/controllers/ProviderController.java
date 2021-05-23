@@ -211,5 +211,9 @@ public class ProviderController {
         }
         return "/provider/dashboard";
     }
-
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:/provider/login";
+    }
 }
