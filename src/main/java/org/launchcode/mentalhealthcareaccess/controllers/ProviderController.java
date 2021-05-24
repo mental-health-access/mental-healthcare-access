@@ -4,6 +4,7 @@ import org.launchcode.mentalhealthcareaccess.models.Provider;
 
 import org.launchcode.mentalhealthcareaccess.models.data.dto.LoginFormDTO;
 import org.launchcode.mentalhealthcareaccess.models.data.dto.RegisterFormDTO;
+import org.launchcode.mentalhealthcareaccess.models.dto.UserLoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -115,13 +116,13 @@ public class ProviderController {
 
     @GetMapping("/provider/login")
     public String displayLoginForm(Model model) {
-        model.addAttribute(new LoginFormDTO());
+        model.addAttribute(new UserLoginFormDTO());
         model.addAttribute("title", "Log In");
         return "/provider/login";
     }
 
     @PostMapping("/provider/login")
-    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
+    public String processLoginForm(@ModelAttribute @Valid UserLoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
                                    Model model, HttpSession session) {
 

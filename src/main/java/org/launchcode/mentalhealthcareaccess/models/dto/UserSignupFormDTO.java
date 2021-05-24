@@ -9,17 +9,17 @@ public class UserSignupFormDTO extends UserLoginFormDTO {
     @NotNull
     @NotBlank(message = "")
     @Size(min=2,max=30, message = "First name must be between 2 and 30 characters.")
-    private String firstName;
+    protected String firstName;
 
     @NotNull
     @NotBlank(message = "")
     @Size(min=2,max=30, message = "Last name must be between 2 and 30 characters.")
-    private String lastName;
+    protected String lastName;
 
     @NotNull
     @NotBlank(message = "")
     @Size(min=5,max=30, message = "Invalid password. Must be between 5 and 30 characters.")
-    private String verifyPassword;
+    protected String verifyPassword;
 
     public String getFirstName() {
         return firstName;

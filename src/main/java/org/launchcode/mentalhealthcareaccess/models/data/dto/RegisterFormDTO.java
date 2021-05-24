@@ -1,14 +1,10 @@
 package org.launchcode.mentalhealthcareaccess.models.data.dto;
 
-import org.launchcode.mentalhealthcareaccess.models.dto.UserLoginFormDTO;
+import org.launchcode.mentalhealthcareaccess.models.dto.UserSignupFormDTO;
 
 import javax.validation.constraints.NotBlank;
 
-public class RegisterFormDTO extends UserLoginFormDTO {
-    @NotBlank
-    private String verifyPassword;
-    private String firstName;
-    private String lastName;
+public class RegisterFormDTO extends UserSignupFormDTO {
     private String companyName;
     private String displayName;
 
