@@ -1,10 +1,12 @@
 package org.launchcode.mentalhealthcareaccess.models.data.dto;
 
-import org.launchcode.mentalhealthcareaccess.models.dto.UserSignupFormDTO;
-
 import javax.validation.constraints.NotBlank;
 
-public class RegisterFormDTO extends UserSignupFormDTO {
+public class RegisterFormDTO extends LoginFormDTO {
+    @NotBlank
+    private String verifyPassword;
+    private String firstName;
+    private String lastName;
     private String companyName;
     private String displayName;
 
@@ -29,10 +31,10 @@ public class RegisterFormDTO extends UserSignupFormDTO {
     }
     public String getDisplayName() {
         if (firstName != "" && lastName != "") {
-             displayName = lastName + ", " + firstName;
+            displayName = lastName + ", " + firstName;
         }
         else {
-             displayName = companyName;
+            displayName = companyName;
         }
         return displayName;
     }
