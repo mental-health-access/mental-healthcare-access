@@ -22,6 +22,8 @@ public class Provider extends AbstractEntity {
     @NotNull
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    @ElementCollection
+    private List<String> insurance;
 
     @ElementCollection(targetClass = Languages.class)
     @CollectionTable(name = "provider_languages",
@@ -130,10 +132,20 @@ public class Provider extends AbstractEntity {
     public void addLanguages(Languages languages) {
 
         this.languages.add(languages);
-
-
     }
 
+    public List<String> getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(List<String> insurance) {
+        this.insurance = insurance;
+    }
+
+    public void addInsurance(List<String> insurance) {
+
+        this.insurance.add(String.valueOf(insurance));
+    }
 }
 
 
