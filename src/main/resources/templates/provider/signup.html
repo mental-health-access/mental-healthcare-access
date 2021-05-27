@@ -50,6 +50,18 @@
         <label th:text="#{verifyPw}"></label>
         <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
     </div>
+    <div class="form-group">
+        <label>Primary language of your practice
+            <select th:field = "${registerFormDTO.lang}">
+                <option th:each="languages : ${T(org.launchcode.mentalhealthcareaccess.models.Languages).values()}"
+                       th:value="${languages}"
+                       th:text="${languages.displayValue}">
+                </option>
+            </select>
+        </label>
+
+
+    </div>
 
     <button th:text="#{sButton} "type="submit"/></button>
 </form>
