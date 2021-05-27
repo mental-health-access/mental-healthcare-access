@@ -116,13 +116,13 @@ public class ProviderController {
 
     @GetMapping("/provider/login")
     public String displayLoginForm(Model model) {
-        model.addAttribute(new UserLoginFormDTO());
+        model.addAttribute(new LoginFormDTO());
         model.addAttribute("title", "Log In");
         return "/provider/login";
     }
 
     @PostMapping("/provider/login")
-    public String processLoginForm(@ModelAttribute @Valid UserLoginFormDTO loginFormDTO,
+    public String processLoginForm(@ModelAttribute @Valid LoginFormDTO loginFormDTO,
                                    Errors errors, HttpServletRequest request,
                                    Model model, HttpSession session) {
 

@@ -9,8 +9,16 @@ import javax.validation.constraints.NotNull;
 public class Provider extends AbstractUser {
     private String companyName;
     private String displayName;
+    private String lastName;
 
     private String phoneNumber;
+    @NotBlank
+    private String firstName;
+    @NotNull
+    private String email;
+    @NotNull
+    private String pwHash;
+
     public Provider(){ }
     public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password) {
         this.companyName = companyName;
