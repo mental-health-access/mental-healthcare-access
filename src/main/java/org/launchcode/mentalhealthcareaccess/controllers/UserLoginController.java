@@ -58,10 +58,4 @@ public class UserLoginController {
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
     }
-
-    @GetMapping("/logout")
-    public String logout(HttpServletRequest request) {
-        request.getSession().invalidate();
-    return"redirect:/user/login";
-    }
 }

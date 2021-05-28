@@ -35,19 +35,19 @@
     </div>
 
     <div class="form-group">
-        <label th:text="#{email}"></label>
+        <label th:for="email" th:text="#{email}"></label>
         <input class="form-control" th:field="${registerFormDTO.email}" />
         <p class="error" th:errors="${registerFormDTO.email}"></p>
     </div>
 
     <div class="form-group">
-        <label th:text="#{password}"></label>
+        <label th:for="password" th:text="#{password}"></label>
         <input class="form-control" th:field="${registerFormDTO.password} " type="password"/>
         <p class="error" th:errors="${registerFormDTO.password}"></p>
     </div>
 
     <div class="form-group">
-        <label th:text="#{verifyPw}"></label>
+        <label th:for="verifyPassword" th:text="#{verifyPw}"></label>
         <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
     </div>
 
