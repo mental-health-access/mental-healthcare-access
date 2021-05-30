@@ -16,7 +16,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String displayName;
     private Languages lang;
     @NotBlank
-    @Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$")
+    @Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$", message = "please enter a valid phone number")
     private String phoneNumber;
 
     public Languages getLang() {
