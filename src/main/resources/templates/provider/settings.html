@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<body class="container body-content">
+
+
+
+<nav th:replace="fragments :: header"></nav>
+
+
+
+<form method="post" style="max-width:600px;">
+    <div class="form-group">
+        <label> <p Set the languages in which you provide services></p>
+            <p th:text="${'Languages that you currently support: ' + currentLanguages + ' '}"></p>
+            <input type = "hidden" th:field="${providerLanguages.provider}">
+            <select th:field = "${providerLanguages.languages}">
+                <option th:each="languages : ${T(org.launchcode.mentalhealthcareaccess.models.Languages).values()}"
+                        th:value="${languages}"
+                        th:text="${languages.displayValue}">
+                </option>
+            </select>
+        </label>
+    </div>
+        <input type="submit" value="Save" />
+</form>
+</body>
+</html>
