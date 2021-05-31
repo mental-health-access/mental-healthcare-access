@@ -5,6 +5,7 @@ import org.launchcode.mentalhealthcareaccess.models.Languages;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 
 public class RegisterFormDTO extends LoginFormDTO {
     @NotBlank
@@ -15,6 +16,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String displayName;
     private Languages lang;
     @NotBlank
+    @Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$", message = "please enter a valid phone number")
     private String phoneNumber;
 
     public Languages getLang() {
