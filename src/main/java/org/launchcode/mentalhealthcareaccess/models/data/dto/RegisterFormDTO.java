@@ -44,10 +44,10 @@ public class RegisterFormDTO extends LoginFormDTO {
     }
     public String getDisplayName() {
         if (firstName != "" && lastName != "") {
-            displayName = lastName + ", " + firstName;
+             displayName = lastName + ", " + firstName;
         }
         else {
-            displayName = companyName;
+             displayName = companyName;
         }
         return displayName;
     }
