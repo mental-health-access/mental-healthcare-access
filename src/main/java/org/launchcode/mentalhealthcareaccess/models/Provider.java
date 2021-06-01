@@ -11,7 +11,7 @@ import java.util.List;
 
 
 @Entity
-public class Provider extends AbstractUser {
+public class Provider extends AbstractEntity {
     private String companyName;
     private String displayName;
     private String lastName;
