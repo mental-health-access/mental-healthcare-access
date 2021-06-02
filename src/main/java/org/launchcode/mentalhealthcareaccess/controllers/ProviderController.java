@@ -167,7 +167,7 @@ public class ProviderController {
         session.setAttribute("phone", theProvider.getPhoneNumber());
         session.setAttribute("providerId", theProvider.getId());
         session.setAttribute("languages", theProvider.getLanguages());
-        session.setAttribute("provider", theProvider);
+       
         //Login to dashboard
         return "/provider/dashboard";
     }
