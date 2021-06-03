@@ -11,13 +11,23 @@ import java.util.List;
 
 
 @Entity
-public class Provider extends AbstractUser {
+public class Provider extends AbstractEntity {
     private String companyName;
     private String displayName;
+    private String lastName;
     private Languages lang;
     private String phoneNumber;
+    @NotBlank
+    private String firstName;
+    @NotBlank
+    @Email(message = "Invalid email. Try again.")
+    private String email;
+    @NotNull
+    private String pwHash;
+    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @ElementCollection
     private List<String> insurance;
+
     @ElementCollection(targetClass = Languages.class)
     @CollectionTable(name = "provider_languages",
             joinColumns = @JoinColumn(name = "provider_id"))
