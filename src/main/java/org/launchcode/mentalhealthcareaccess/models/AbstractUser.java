@@ -10,16 +10,15 @@ import javax.validation.constraints.*;
 @MappedSuperclass
 public abstract class AbstractUser extends AbstractEntity {
 
-    @NotNull
+
     protected String firstName;
 
-    @NotNull
+
     protected String lastName;
 
-    @NotNull
+
     protected String email;
 
-    @NotNull
     protected String pwHash;
 
     protected static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();

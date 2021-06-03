@@ -15,6 +15,7 @@ public class RegisterFormDTO extends LoginFormDTO {
     private String companyName;
     private String displayName;
     private Languages lang;
+    private String available;
     @NotBlank
     @Pattern(regexp = "^(\\+\\d{1,2}\\s)?\\(?\\d{3}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}$", message = "please enter a valid phone number")
     private String phoneNumber;
@@ -73,4 +74,7 @@ public class RegisterFormDTO extends LoginFormDTO {
         this.verifyPassword = verifyPassword;
     }
 
+    public String getAvailable() { return available; }
+
+    public void setAvailable(String available) { this.available = available; }
 }

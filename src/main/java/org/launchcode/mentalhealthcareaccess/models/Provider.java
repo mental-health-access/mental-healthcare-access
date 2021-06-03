@@ -17,12 +17,11 @@ public class Provider extends AbstractUser {
     private String lastName;
     private Languages lang;
     private String phoneNumber;
-    @NotBlank
+
     private String firstName;
-    @NotBlank
+
     @Email(message = "Invalid email. Try again.")
     private String email;
-    @NotNull
     private String pwHash;
     private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @ElementCollection
@@ -35,10 +34,12 @@ public class Provider extends AbstractUser {
     @Column(name = "languages_supported")
     private final List<Languages> languages = new ArrayList<>();
 
+    private String available;
+
     public Provider() {
     }
 
-    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password, Languages lang) {
+    public Provider(String displayName, String companyName, String firstName, String lastName, String email, String phoneNumber, String password, Languages lang, String available) {
         this.companyName = companyName;
         this.firstName = firstName;
         this.email = email;
@@ -47,6 +48,7 @@ public class Provider extends AbstractUser {
         this.pwHash = encoder.encode(password);
         this.displayName = displayName;
         this.lang = lang;
+        this.available = available;
     }
 
     public Languages getLang() {
@@ -148,6 +150,14 @@ public class Provider extends AbstractUser {
     public void addInsurance(List<String> insurance) {
 
         this.insurance.add(String.valueOf(insurance));
+    }
+
+    public String getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
     }
 }
 

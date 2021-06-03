@@ -27,13 +27,6 @@
     <div>
         <p th:text="${'Types of insurance that you currently support: ' + modProvider.getInsurance + ' '}"></p>
         <label>
-          <!--  <ul>
-                <li th:each="ins : ${allInsurance}">
-                    <input type="checkbox" th:field="${newInsurance}" th:value="${ins}"/>
-                    <label th:for="${#ids.prev('insurance')}"
-                           th:text="${ins}">Insurance</label>
-                </li>
-            </ul>-->
             <ul>
                 <li th:each="ins : ${insuranceTypes}">
                     <input type="checkbox" name="insuranceValues" th:value="${ins}" th:checked= "${#lists.contains(modProvider.getInsurance, ins)}" />
@@ -42,7 +35,16 @@
             </ul>
         </label>
     </div>
-        <input type="submit" value="Save" />
+   <div class="form-group">
+        <label th:for="available" th:text="#{setAvailability}"></label>
+        <select th:field = "${providerSettings.provider.available}">
+            <option th:value= "yes" th:text="#{yes}"></option>
+            <option th:value= "no" th:text="No"></option>
+        </select>
+
+   </div>
+
+    <input type="submit" value="Save" />
 </form>
 </body>
 </html>

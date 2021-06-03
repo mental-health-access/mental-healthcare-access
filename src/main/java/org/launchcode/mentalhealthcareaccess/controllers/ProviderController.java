@@ -6,7 +6,7 @@ import org.launchcode.mentalhealthcareaccess.models.Provider;
 import org.launchcode.mentalhealthcareaccess.models.data.dto.LoginFormDTO;
 import org.launchcode.mentalhealthcareaccess.models.data.dto.ProviderSettingsDTO;
 import org.launchcode.mentalhealthcareaccess.models.data.dto.RegisterFormDTO;
-
+import org.launchcode.mentalhealthcareaccess.models.dto.UserLoginFormDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -111,7 +111,8 @@ public class ProviderController {
                 registerFormDTO.getEmail(),
                 registerFormDTO.getPhoneNumber(),
                 registerFormDTO.getPassword(),
-                registerFormDTO.getLang());
+                registerFormDTO.getLang(),
+                registerFormDTO.getAvailable());
 
         providerRepository.save(newProvider);
 
@@ -168,7 +169,7 @@ public class ProviderController {
         session.setAttribute("phone", theProvider.getPhoneNumber());
         session.setAttribute("providerId", theProvider.getId());
         session.setAttribute("languages", theProvider.getLanguages());
-        session.setAttribute("provider", theProvider);
+
         //Login to dashboard
         return "/provider/dashboard";
     }
@@ -213,10 +214,17 @@ public class ProviderController {
                                       Errors errors,
                                       Model model,
                                       HttpSession session,
-                                      Provider modProvider,  @RequestParam List<String> insuranceValues){
+                                      Provider modProvider,
+                                      @RequestParam List<String> insuranceValues
+
+    ){
+
+
         if (!modProvider.getInsurance().contains(insuranceValues)) {
             modProvider.setInsurance(insuranceValues);
         }
+
+
         providerRepository.save(modProvider);
         if (!errors.hasErrors()){
             Provider provider = providerSettings.getProvider();
