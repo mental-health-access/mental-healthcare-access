@@ -2,8 +2,10 @@ package org.launchcode.mentalhealthcareaccess.models;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +16,8 @@ public class Provider extends AbstractUser {
     private String displayName;
     private Languages lang;
     private String phoneNumber;
-
+    @ElementCollection
+    private List<String> insurance;
     @ElementCollection(targetClass = Languages.class)
     @CollectionTable(name = "provider_languages",
             joinColumns = @JoinColumn(name = "provider_id"))
@@ -122,10 +125,20 @@ public class Provider extends AbstractUser {
     public void addLanguages(Languages languages) {
 
         this.languages.add(languages);
-
-
     }
 
+    public List<String> getInsurance() {
+        return insurance;
+    }
+
+    public void setInsurance(List<String> insurance) {
+        this.insurance = insurance;
+    }
+
+    public void addInsurance(List<String> insurance) {
+
+        this.insurance.add(String.valueOf(insurance));
+    }
 }
 
 
