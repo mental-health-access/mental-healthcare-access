@@ -51,15 +51,21 @@
         <input class="form-control" th:field="${registerFormDTO.verifyPassword}" type="password"/>
     </div>
     <div class="form-group">
-        <label>Primary language of your practice
+        <label th:for="languages" th:text="#{mainLang}"></label>
             <select th:field = "${registerFormDTO.lang}">
                 <option th:each="languages : ${T(org.launchcode.mentalhealthcareaccess.models.Languages).values()}"
                        th:value="${languages}"
                        th:text="${languages.displayValue}">
                 </option>
             </select>
-        </label>
-
+    </div>
+    <div class="form-group">
+        <label th:for="available" th:text="#{setAvailability}"></label>
+            <select th:field = "${registerFormDTO.available}">
+                <option value="yes" th:text="#{yes}"></option>
+                <option value="no" th:text="No"></option>
+                </option>
+            </select>
 
     </div>
 

@@ -48,7 +48,9 @@ public class AuthenticationFilter extends HandlerInterceptorAdapter {
         User user = userSignupController.getUserFromSession(session);
         Provider provider = providerController.getProviderFromSession(session);
 
-        if (user != null | provider != null) {
+
+        if (user != null || provider != null) {
+
             return true;
         }
 
