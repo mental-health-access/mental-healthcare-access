@@ -14,17 +14,8 @@ import java.util.List;
 public class Provider extends AbstractUser {
     private String companyName;
     private String displayName;
-    private String lastName;
     private Languages lang;
     private String phoneNumber;
-    @NotBlank
-    private String firstName;
-    @NotBlank
-    @Email(message = "Invalid email. Try again.")
-    private String email;
-    @NotNull
-    private String pwHash;
-    private static final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
     @ElementCollection
     private List<String> insurance;
 
