@@ -25,6 +25,7 @@ dependencies {
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	testImplementation('org.springframework.boot:spring-boot-starter-test')
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
+	compile 'org.seleniumhq.selenium:selenium-java:3.141.59'
 }
 
 test {
