@@ -52,10 +52,14 @@ public class UserLoginController {
 
         setUserInSession(request.getSession(), theUser);
 
+
         return "redirect:/user";
     }
 
     private static void setUserInSession(HttpSession session, User user) {
         session.setAttribute(userSessionKey, user.getId());
+        session.setAttribute("firstName", user.getFirstName());
+        session.setAttribute("lastName", user.getLastName());
+        session.setAttribute("email", user.getEmail());
     }
 }
