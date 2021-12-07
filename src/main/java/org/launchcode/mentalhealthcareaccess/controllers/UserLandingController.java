@@ -11,6 +11,7 @@ public class UserLandingController {
     @GetMapping("/user")
     public String displayUserPage(Model model) {
         model.addAttribute("welcome", "Welcome");
+        model.addAttribute("name","Name");
         return "user/user";
     }
 

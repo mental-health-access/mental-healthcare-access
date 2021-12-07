@@ -1,4 +1,5 @@
 package org.launchcode.mentalhealthcareaccess.controllers;
+import com.mysql.cj.x.protobuf.MysqlxDatatypes;
 import org.launchcode.mentalhealthcareaccess.models.Languages;
 import org.launchcode.mentalhealthcareaccess.models.data.ProviderRepository;
 import org.launchcode.mentalhealthcareaccess.models.Provider;
@@ -238,11 +239,20 @@ public class ProviderController {
         }
         return "/provider/dashboard";
     }
-
+    private String parseRequestForUserType(HttpServletRequest request){
+        String refererUrl = request.getHeader("referer");
+        String[] split = refererUrl.split("/");
+        int length = split.length;
+        return split[3];
+    }
 
     @GetMapping("/logout")
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();
-        return "redirect:/provider/login";
+        return "redirect:/" + parseRequestForUserType(request)+"/login";
+
+
+
     }
+
 }

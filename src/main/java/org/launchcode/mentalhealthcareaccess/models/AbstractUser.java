@@ -2,10 +2,7 @@ package org.launchcode.mentalhealthcareaccess.models;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.validation.constraints.*;
 
 @MappedSuperclass
 public abstract class AbstractUser extends AbstractEntity {
